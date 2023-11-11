@@ -1,34 +1,42 @@
 <?php include "db.php" ?>
 
 <?php
-if (isset($_POST['username'])) {
+if (isset($_POST['loginCheck'])) {
     // Get user input
-    $user = $_POST['username'];
+    $sr = $_POST['srcode'];
     $pass = $_POST['password'];
 
     // SQL query to check if the provided username and password match in the database
-    $query = "SELECT * FROM logintable WHERE UserName = '{$user}'";
-    $result = mysqli_query($conn, $query);
+    $query = "SELECT * FROM student table WHERE SR-Code = '{$sr}'";
+    $result = $conn->query($query);
 
-    // Initialize the $password variable
-    $password = '';
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $srd = $row['SR-Code'];
+    } 
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $id = $row['UserID'];
-        $username = $row['UserName'];
-        $email = $row['Email'];
-        $password = $row['Password'];
-    }
+    $passd = "";
 
-    if (empty($pass) || empty($user)) {
+    $query = "SELECT * FROM logintable WHERE Password = '{$pass}'";
+    $result = $conn->query($query);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $passd = $row['Password'];
+    } 
+
+
+
+    if (empty($pass) || empty($sr)) {
         echo "<script type='text/javascript'>alert('Please enter your username and password.'); window.location.href = 'login.php';</script>";
     } else {
-        if ($pass == $password && $user == $username) {
+        if ($pass == $passd && $sr == $srd) {
             echo "<script type='text/javascript'>alert('Login successful!'); window.location.href = 'home.php';</script>";
         } else {
             echo "<script type='text/javascript'>alert('Incorrect username or password.'); window.location.href = 'login.php';</script>";
         }
     }
+
     // Close the database connection
     mysqli_close($conn);
 }
