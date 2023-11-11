@@ -15,6 +15,8 @@
         <img src="img/Batangas_State_Logo.png">
 
         <h1>BOOK RESERVATION SYSTEM</h1>
+        <h1>BOOK RESERVATION SYSTEM</h1>
+        <h1>BOOK RESERVATION SYSTEM</h1>
 
         <a class="button" href="login.php">
             <img src="img/cics_logo.jpg">
