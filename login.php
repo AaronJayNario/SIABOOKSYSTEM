@@ -21,13 +21,13 @@
     <div class="login-container">
         <h2>LOGIN</h2>
         <form id="login-form" action="server.php" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" ><br><br>
+            <label for="srcode">SR-Code:</label>
+            <input type="text" id="srcode" name="srcode" ><br><br>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" ><br><br>
 
-            <input name="user_name" type="submit" value="Login">
+            <input name="loginCheck" type="submit" value="Login">
         </form>
     </div>
     <img class="background" src ="img/bsu_pic">
