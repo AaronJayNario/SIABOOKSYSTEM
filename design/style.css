@@ -17,14 +17,15 @@ img.background {
 .navigation {
     width: 100%;
     margin: 0 auto;
-    background-color: #333;
+    background-color: #2a2a2a;
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
 }
-.navigation > h1{
+
+.navigation>h1 {
     margin-left: 5%;
     position: absolute;
 }
@@ -35,7 +36,7 @@ img {
     float: left;
 }
 
-.logout {
+.logoutC {
     font-size: 18px;
     font-family: 'Oswald', sans-serif;
     position: relative;
@@ -50,7 +51,7 @@ img {
 
 }
 
-.button {
+.logoutBtn {
     text-decoration: none;
     margin: 8px;
     margin-left: 5%;
@@ -62,18 +63,38 @@ img {
     overflow: hidden
 }
 
-a:hover {
+.logoutBtn:hover {
     width: 200px;
 }
 
-a:hover .logout {
+.logoutBtn:hover .logoutC {
     opacity: .9;
 }
-.container{
-    width: 500px;
-    height: 450px;
-    background-color: white;
-    opacity: 40%;
-    justify-items: center;
-    z-index: 1;
+
+
+.midContainer {
+display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+vertical-align: middle; 
+}
+
+.bookContainer {
+    background-color:rgba(193, 198, 109, 0.769);
+   margin-top: 50px;
+    border-radius: 20px;
+   margin-right: 20px;
+    padding: 20px;
+    width: 940px;
+    
+}
+
+.reserveContainer {
+    background-color:rgba(109, 182, 198, 0.769);
+    margin-top: 50px;
+    border-radius: 20px;
+   
+    padding: 20px;
+    width: 345px;
 }
