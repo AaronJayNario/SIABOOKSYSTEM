@@ -5,7 +5,7 @@
 }
 
 img.background {
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
     z-index: -1;
@@ -73,6 +73,8 @@ img {
 
 
 .midContainer {
+  margin-bottom: 100px;
+
 display:flex;
 flex-direction: row;
 flex-wrap: wrap;
@@ -80,21 +82,117 @@ justify-content: center;
 vertical-align: middle; 
 }
 
+
+
+
+
+.extra-buttons {
+  border-radius: 20px;
+  position: relative;
+  height: 50px;
+  padding: 2px;
+  right: 0;
+  display: none;
+  background-color: #181818;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.extra-buttons button {
+  
+  padding: 10px;
+  text-align: left;
+}
+
+
+
+
+/* Style the div container */
+.bookNav {
+  border-radius: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Style the form element */
+  form {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style the input element */
+  .search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  /* Style the buttons */
+  .search-button,
+  .book-button, .description-button, .author-button, .category-button {
+    margin-right: 7.5px;
+    margin-left: 7.5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Assign different background colors to the buttons */
+  .search-button {
+    margin-right: 10px;
+    background-color: #181818;
+  }
+  
+  .book-button {
+    background-color: #2196f3;
+  }
+  .description-button {
+    background-color: #4caf50;
+  }
+  
+  .author-button {
+    background-color: #ff9800;
+  }
+  
+  .category-button {
+    background-color: #f44336;
+  }
+  
+  /* Change the button background color on hover */
+  .search-button:hover, .description-button:hover, .author-button:hover, .category-button:hover {
+    opacity: 0.8;
+  }
+  
+
+
+
+
 .bookContainer {
-    background-color:rgba(193, 198, 109, 0.769);
+    background-color:rgba(236, 178, 139, 0.769);
    margin-top: 50px;
     border-radius: 20px;
    margin-right: 20px;
     padding: 20px;
     width: 940px;
-    
+    box-shadow: 0 20px 10px rgba(0,0,0,0.5);
 }
 
 .reserveContainer {
-    background-color:rgba(109, 182, 198, 0.769);
+    background-color:rgba(119, 173, 80, 0.769);
     margin-top: 50px;
-    border-radius: 20px;
-   
+    border-radius: 20px; 
     padding: 20px;
     width: 345px;
+    box-shadow: 0 20px 10px rgba(0,0,0,0.5);
 }

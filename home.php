@@ -41,7 +41,30 @@ $sNamE = $_SESSION['Name'];
 
   <div class="midContainer">
     <div class="bookContainer">
-      <table class="table h6 table-bordered table-striped table-bordered table-hover mx-auto" style="width: 900px; ">
+
+    <div class="bookNav">
+  <form>
+    <input type="text" placeholder="Search books..." class="search-input">
+    <button type="button" class="search-button"onclick="toggleDropdown()">Search</button>
+      <div class="extra-buttons">
+      <button type="submit" class="book-button">Book</button>
+        <button type="submit" class="description-button">Description</button>
+        <button type="submit" class="author-button">Author</button>
+        <button type="submit" class="category-button">Category</button>
+      </div>
+  </form>
+
+<script>
+ function toggleDropdown() {
+  var dropdown = document.querySelector('.extra-buttons');
+  dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+}
+ </script>
+
+
+</div>
+
+      <table class="table  h6 table-bordered table-striped table-bordered table-hover mx-auto" style="width: 900px; ">
         <thead class="table-dark text-white">
           <tr>
             <th scope="col">Book Names</th>
@@ -58,7 +81,7 @@ $sNamE = $_SESSION['Name'];
 
             $studID = $_SESSION['StudentID'];
 
-            $query = "SELECT * FROM booktable";
+            $query = "SELECT * FROM booktable WHERE NOT EXISTS (SELECT * FROM reservetable WHERE booktable.BookID = reservetable.BookID)";
             $view_book = mysqli_query($conn, $query); //sending the query to the database
             
             //displaying all the data retrieved from database using while loop
@@ -100,7 +123,7 @@ $sNamE = $_SESSION['Name'];
           <tr>
             <th scope="col">Book Name</th>
             <th scope="col">Status</th>
-            <th scope="col" colspan="2" class="text-center"></th>
+            <th scope="col" colspan="0" class="text-center"></th>
           </tr>
         </thead>
         <tbody>
@@ -135,7 +158,7 @@ $sNamE = $_SESSION['Name'];
                 echo "<th scope='row'>{$bookName}</th>";
                 echo "<td> {$reserveStat} </td>";
 
-                echo "<td class = 'text-center'> <a href='view.php?book_id={$bookId}' class='btn btn-success'> Info </a></td>";
+                echo "<td class = 'text-center'> <a href='reserve.php?reserve_id={$reserveId}&reserve_stat={$reserveStat}' class='btn btn-danger'> Cancel </a></td>";
 
                 echo "</tr>";
               }

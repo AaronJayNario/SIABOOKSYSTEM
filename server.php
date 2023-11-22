@@ -23,7 +23,7 @@ if (isset($_POST['loginCheck'])) {
     } 
    
 
-    $query = "SELECT * FROM `logintable` WHERE `Password` = '{$pass}'";
+    $query = "SELECT * FROM `logintable` WHERE `StudentID` = '{$_SESSION['StudentID']}'";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
