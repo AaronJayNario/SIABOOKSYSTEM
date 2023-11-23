@@ -1,79 +1,132 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 img.background {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  filter: blur(2px);
 }
 
 .navigation {
-    width: 100%;
-    margin: 0 auto;
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #2a2a2a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
 }
-.navigation > h1{
-    margin-left: 5%;
-    position: absolute;
+
+.navigation>h1 {
+  margin-left: 5%;
+  position: absolute;
+}
+
+.navigation>p {
+  font-size: x-large;
+  padding-left: 60%;
+  position: fixed;
+  position: absolute;
 }
 
 img {
-    width: 65px;
-    border-radius: 50px;
-    float: left;
+  width: 65px;
+  border-radius: 50px;
+  float: left;
 }
 
-.logout {
-    font-size: 18px;
-    font-family: 'Oswald', sans-serif;
-    position: relative;
-    margin-top: 16px;
-    right: -18px;
-    bottom: -4px;
-    overflow: hidden;
-    letter-spacing: 3px;
-    opacity: 0;
-    transition: opacity .45s;
-    -webkit-transition: opacity .35s;
+.logoutC {
+  font-size: 18px;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+  margin-top: 16px;
+  right: -18px;
+  bottom: -4px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
 
 }
 
-.button {
-    text-decoration: none;
-    margin: 8px;
-    margin-left: 5%;
-    color: white;
-    width: 65px;
-    background-color: black;
-    transition: width .35s;
-    -webkit-transition: width .35s;
-    overflow: hidden
+.logoutBtn {
+  text-decoration: none;
+  margin: 8px;
+  margin-left: 5%;
+  color: white;
+  width: 65px;
+  background-color: black;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden
 }
 
-a:hover {
-    width: 200px;
+.logoutBtn:hover {
+  width: 200px;
 }
 
-a:hover .logout {
-    opacity: .9;
+.logoutBtn:hover .logoutC {
+  opacity: .9;
 }
-.container{
-    width: 500px;
-    height: 450px;
-    background-color: white;
-    opacity: 40%;
-    justify-items: center;
-    z-index: 1;
+
+
+.midContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.bookContainer {
+  background-color: rgba(193, 198, 109, 0.769);
+  margin-top: 50px;
+  border-radius: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  width: 940px;
+
+}
+
+.reserveContainer {
+  background-color: rgba(109, 182, 198, 0.769);
+  margin-top: 50px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 345px;
+}
+
+.libra-post{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  vertical-align: middle;
+}
+.librarian {
+  background-color: rgba(193, 198, 109, 0.769);
+  margin-top: 50px;
+  border-radius: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  width: 1200px;
+}
+
+.return-details{
+  justify-content: center;
+  vertical-align: middle;
+  background-color: rgba(109, 182, 198, 0.769);
+  margin-top: 50px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 940px;
 }

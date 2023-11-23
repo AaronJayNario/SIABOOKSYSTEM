@@ -5,28 +5,53 @@
     <meta charset="UTF-8">
     <title>Book Reservation</title>
     <link href="design/style.css" rel="stylesheet">
+    <link href="design/admin_style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-
 <body>
     <div class="navigation">
-
-        <img src="img/Batangas_State_Logo.png">
-
-        <h1 href = "home.php">BOOK RESERVATION SYSTEM</h1>
-
-        <a class="button" href="login.php">
-            <img src="img/cics_logo.jpg">
-            <div class="logout">LOGOUT</div>
-        </a>
-
+        <h1>Batangas State University</h1>
+        <img src="img/Batangas_State_Logo.png" alt="BSU Logo">
     </div>
 
-    <img class="background" src="img/bsu_pic">
+    <div class="container">
+        <h1 class="heading">ADMIN DASHBOARD</h1>
 
-    
+        <div class="box-container">
+            <div class="box">
+                <img src="img/open-book-icon.png" alt="Book Icon">
+                <a href="#" class="btn">BOOKTABLE</a>
+            </div>
 
+            <div class="box">
+                <img src="img/open-book-icon.png" alt="Book Icon">
+                <a href="#" class="btn">BOOKTABLE</a>
+            </div>
+
+            <div class="box">
+                <img src="img/open-book-icon.png" alt="Book Icon">
+                <a href="#" class="btn">BOOKTABLE</a>
+            </div>
+
+            <div class="box">
+                <img src="img/open-book-icon.png" alt="Book Icon">
+                <a href="#" class="btn">BOOKTABLE</a>
+            </div>
+
+            <div class="box">
+                <img src="img/open-book-icon.png" alt="Book Icon">
+                <a href="#" class="btn">BOOKTABLE</a>
+            </div>
+
+            <div class="box">
+                <img src="img/open-book-icon.png" alt="Book Icon">
+                <a href="#" class="btn">BOOKTABLE</a>
+            </div>
+        </div>
+    </div>
+
+    <img class="background" src="img/bsu_pic" alt="BSU Background">
 </body>
 
 </html>

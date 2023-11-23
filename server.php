@@ -1,34 +1,48 @@
-<?php include "db.php" ?>
+<?php include "db.php";
 
-<?php
-if (isset($_POST['username'])) {
-    // Get user input
-    $user = $_POST['username'];
+
+session_start();
+
+if (isset($_POST['loginCheck'])) {
+   
+    $sr = $_POST['srcode'];
     $pass = $_POST['password'];
+    
+    $query = "SELECT * FROM `student table` WHERE `SR-Code` = '{$sr}'";
+    $result = $conn->query($query);
 
-    // SQL query to check if the provided username and password match in the database
-    $query = "SELECT * FROM logintable WHERE UserName = '{$user}'";
-    $result = mysqli_query($conn, $query);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $_SESSION['StudentID'] = $row['StudentID'];
+        $_SESSION['SR-Code'] = $row['SR-Code'];
+        $_SESSION['Name'] = $row['StudentName'];
+        $_SESSION['year'] = $row['Year & Section'];
+        $_SESSION['department'] = $row['Department'];
+        $srd = $row['SR-Code'];
+       
+    } 
+   
 
-    // Initialize the $password variable
-    $password = '';
+    $query = "SELECT * FROM `logintable` WHERE `StudentID` = '{$_SESSION['StudentID']}'";
+    $result = $conn->query($query);
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $id = $row['UserID'];
-        $username = $row['UserName'];
-        $email = $row['Email'];
-        $password = $row['Password'];
-    }
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $passd = $row['Password'];
+    } 
 
-    if (empty($pass) || empty($user)) {
+
+
+    if (empty($pass) || empty($sr)) {
         echo "<script type='text/javascript'>alert('Please enter your username and password.'); window.location.href = 'login.php';</script>";
     } else {
-        if ($pass == $password && $user == $username) {
+        if ($pass == $passd && $sr == $srd) {
             echo "<script type='text/javascript'>alert('Login successful!'); window.location.href = 'home.php';</script>";
         } else {
-            echo "<script type='text/javascript'>alert('Incorrect username or password.'); window.location.href = 'login.php';</script>";
+            echo "<script type='text/javascript'>alert('Incorrect sr-code or password.'); window.location.href = 'login.php';</script>";
         }
     }
+
     // Close the database connection
     mysqli_close($conn);
 }
