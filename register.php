@@ -1,25 +1,20 @@
-<link rel="stylesheet" type="text/css" href="style.css">
-<link href="design/login_style.css" rel="stylesheet">
-
-
 <?php
 
 include "db.php"; // Include your database connection
 
 if (isset($_POST['register'])) {
-    // Get user input from the registration form
-    $studentName = $_POST['StudentName'];
-    $yearSection = $_POST['Year &   Section'];
-    $srCode = $_POST['SR-Code'];
-    $department = $_POST['Department'];
-    $password = $_POST['Password'];
 
-    // Hash the password for security
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+    $studentName = $_POST['StudentName'];
+    $srCode = $_POST['sr'];
+    $yearSection = $_POST['ys'];
+    $department = $_POST['department'];
+    $password = $_POST['password'];
 
     // Insert into student table
-    $insertStudentQuery = "INSERT INTO `student table` (StudentID, 'Year & Section', StudentName, SR-Code,Department	) VALUES ('$StudentName', '$yearSection', '$srCode', '$department', $password)";
+
+    $insertStudentQuery = "INSERT INTO `student table` (`StudentID`, `StudentName`, `SR-Code`, `Year & Section`, `Department`) VALUES (NULL,'$studentName', '$srCode', '$yearSection',  '$department')";
     $resultStudent = $conn->query($insertStudentQuery);
+
 
     if ($resultStudent) {
         // If the student record is added successfully, get the generated StudentID
@@ -27,22 +22,22 @@ if (isset($_POST['register'])) {
         if (!$resultStudent) {
             die("Student Query Failed: " . $conn->error);
         }
-        
+
         // Insert into logintable table
-        $insertLoginQuery = "INSERT INTO logintable (StudentID, Password) VALUES ('$studentID', '$hashedPassword')";
+        $insertLoginQuery = "INSERT INTO logintable (StudentID, Password) VALUES ('$studentID', '$password')";
         $resultLogin = $conn->query($insertLoginQuery);
 
         if ($resultLogin) {
-            // If the login record is added successfully, show a success message
-            echo "<script>alert('User added successfully!'); window.location.href = 'alldmin.php';</script>";
+            //If the login record is added successfully, show a success message
+            echo "<script>alert('User added successfully!'); window.location.href = 'admin.php';</script>";
         } else {
-            // Handle the case where insertion into logintable fails
+           // Handle the case where insertion into logintable fails
             echo "<script>alert('Failed to add user.'); window.location.href = 'mkregister.php';</script>";
         }
     } else {
-        // Handle the case where insertion into student table fails
+        //Handle the case where insertion into student table fails
         echo "<script>alert('Failed to add user.'); window.location.href = 'mmllmregister.php';</script>";
-        
+
     }
 
     // Close the database connection
@@ -57,22 +52,17 @@ if (isset($_POST['register'])) {
 <head>
     <meta charset="UTF-8">
     <title>ADD USER</title>
-    <link href="design/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="design/login_style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 </head>
 
 <body>
-    <div class="navigation" style="">
-        <h1>ADD USER</h1>
+    <header>
         <img src="img/Batangas_State_Logo.png">
-
-        <a class="logoutBtn" href="login.php">
-            <img src="img/cics_logo.jpg">
-            <div class="logoutC">LOGOUT</div>
-        </a>
+        <h1>BOOK RESERVATION SYSTEM</h1>
+    </header>
 
     </div>
     <img class="background" src="img/bsu_pic">
@@ -80,22 +70,22 @@ if (isset($_POST['register'])) {
     <div class="login-container">
         <form id="register-form" action="" method="post">
             <div class="login-form">
-                <label for="studentName" class="form-label">Student Name</label>
-                <input type="text" class="form-control" name="studentName">
+                <label for="StudentName" class="form-label">Student Name</label>
+                <input type="text" class="form-control" name="StudentName">
             </div>
 
             <div class="form-group">
-                <label for="srCode" class="form-label">SR-Code</label>
-                <input type="text" class="form-control" name="srCode">
+                <label for="SR-Code" class="form-label">SR-Code</label>
+                <input type="text" class="form-control" name="sr">
             </div>
 
             <div class="form-group">
-                <label for="yearSection" class="form-label">Year & Section</label>
-                <input type="text" class="form-control" name="yearSection">
+                <label for="Year & Section" class="form-label">Year & Section</label>
+                <input type="text" class="form-control" name="ys">
             </div>
 
             <div class="form-group">
-                <label for="department" class="form-label">Department</label>
+                <label for="Department" class="form-label">Department</label>
                 <input type="text" class="form-control" name="department">
             </div>
 
@@ -107,8 +97,9 @@ if (isset($_POST['register'])) {
             <div class="container text-center mt-5">
                 <input type="submit" name="register" class="btn btn-primary mt-2" value="SUBMIT">
             </div>
-
         </form>
+
     </div>
 </body>
+
 </html>

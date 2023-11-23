@@ -49,14 +49,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert a new entry in the returntable with provided DateReturn and TimeReturn
         $dateReturn = $_POST["dateReturn"];
-        $insertQuery = "INSERT INTO `returntable` (ReserveID, DateReserve,DateReturn, Status) 
-                        VALUES ($reserveID, CURDATE(), CURTIME(), '$dateReturn', 'Not Yet Returned')";
+        $timeReturn = $_POST["timeReturn"];
+        $insertQuery = "INSERT INTO `returntable` (ReserveID, DateReserve, TimeReserve, DateReturn, TimeReturn, Status) 
+                        VALUES ($reserveID, CURDATE(), CURTIME(), '$dateReturn', '$timeReturn', 'Not Yet Returned')";
+
         $conn->query($insertQuery);
     } elseif (isset($_POST["cancel"])) {
         $reserveID = $_POST["reserveID"];
 
         // Update the status to "Cancelled" in the reserve table if the reserve book is cancel 
-        $updateQuery = "UPDATE `reservetable` SET Status = 'Cancelled' WHERE ReserveID = $reserveID";
+        $updateQuery = "UPDATE reservetable SET Status = 'Cancelled' WHERE ReserveID = $reserveID";
         $conn->query($updateQuery);
     }
 }
@@ -97,7 +99,7 @@ $result = $conn->query($selectQuery);
             <?php
             if ($result) {
                 if ($result->num_rows > 0) {
-                    // Display a table of pending reserve 
+                    
                     echo "<div style='max-height: 550px; overflow-y: auto;'>";
                     echo "<table class='table table-bordered table-striped table-hover' >
                             <thead class='thead-dark'>
@@ -129,7 +131,6 @@ $result = $conn->query($selectQuery);
                                         <input type='hidden' name='reserveID' value='{$row['ReserveID']}'>
                                         <label for='dateReturn'>Date Return:</label>
                                         <input type='date' name='dateReturn' required>
-                                        
                                         <input type='submit' name='accept' value='Accept' class='btn btn-success'>
                                     </form>
                                 </td>

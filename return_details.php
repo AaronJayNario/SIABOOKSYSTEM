@@ -44,7 +44,6 @@ include "server.php";
                                 <tr>
                                     <th>ReturnID</th>
                                     <th>ReserveID</th>
-                                    
                                     <th>Date Reserve</th>
                                     <th>Date Return</th>
                                     <th>Status</th>
@@ -56,13 +55,12 @@ include "server.php";
                 echo "<tr>
                                 <td>{$rowReturn['ReturnID']}</td>
                                 <td>{$rowReturn['ReserveID']}</td>
-                                
                                 <td>{$rowReturn['DateReserve']}</td>
-                               
                                 <td>{$rowReturn['DateReturn']}</td>
-                                
                                 <td>{$rowReturn['Status']}</td>
+                                
                             </tr>";
+                            
             }
 
             echo "</tbody></table>";
