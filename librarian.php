@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $reserveID = $_POST["reserveID"];
 
         // Update the status to "Accepted" in the reserve table
-        $updateQuery = "UPDATE `reservetable` SET Status = 'Accepted' WHERE ReserveID = $reserveID";
+        $updateQuery = "UPDATE `reservetable` SET Status = 'Approved' WHERE ReserveID = $reserveID";
         $conn->query($updateQuery);
 
         // Insert a new entry in the returntable with provided DateReturn and TimeReturn
