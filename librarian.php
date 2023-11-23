@@ -52,13 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $timeReturn = $_POST["timeReturn"];
         $insertQuery = "INSERT INTO `returntable` (ReserveID, DateReserve, TimeReserve, DateReturn, TimeReturn, Status) 
                         VALUES ($reserveID, CURDATE(), CURTIME(), '$dateReturn', '$timeReturn', 'Not Yet Returned')";
-
         $conn->query($insertQuery);
     } elseif (isset($_POST["cancel"])) {
         $reserveID = $_POST["reserveID"];
 
         // Update the status to "Cancelled" in the reserve table if the reserve book is cancel 
-        $updateQuery = "UPDATE reservetable SET Status = 'Cancelled' WHERE ReserveID = $reserveID";
+        $updateQuery = "UPDATE `reservetable` SET Status = 'Cancelled' WHERE ReserveID = $reserveID";
         $conn->query($updateQuery);
     }
 }
