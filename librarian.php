@@ -44,14 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $reserveID = $_POST["reserveID"];
 
         // Update the status to "Accepted" in the reserve table
-        $updateQuery = "UPDATE `reservetable` SET Status = 'Accepted' WHERE ReserveID = $reserveID";
+        $updateQuery = "UPDATE `reservetable` SET Status = 'Approved' WHERE ReserveID = $reserveID";
         $conn->query($updateQuery);
 
         // Insert a new entry in the returntable with provided DateReturn and TimeReturn
         $dateReturn = $_POST["dateReturn"];
-        $timeReturn = $_POST["timeReturn"];
-        $insertQuery = "INSERT INTO `returntable` (ReserveID, DateReserve, TimeReserve, DateReturn, TimeReturn, Status) 
-                        VALUES ($reserveID, CURDATE(), CURTIME(), '$dateReturn', '$timeReturn', 'Not Yet Returned')";
+        $insertQuery = "INSERT INTO `returntable` (ReserveID, DateReserve,DateReturn, Status) 
+                        VALUES ($reserveID, CURDATE(), CURTIME(), '$dateReturn', 'Not Yet Returned')";
         $conn->query($insertQuery);
     } elseif (isset($_POST["cancel"])) {
         $reserveID = $_POST["reserveID"];
@@ -130,8 +129,7 @@ $result = $conn->query($selectQuery);
                                         <input type='hidden' name='reserveID' value='{$row['ReserveID']}'>
                                         <label for='dateReturn'>Date Return:</label>
                                         <input type='date' name='dateReturn' required>
-                                        <label for='timeReturn'>Time Return:</label>
-                                        <input type='time' name='timeReturn' required>
+                                        
                                         <input type='submit' name='accept' value='Accept' class='btn btn-success'>
                                     </form>
                                 </td>

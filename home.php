@@ -3,6 +3,7 @@ include "db.php";
 include "server.php";
 $srcodE = $_SESSION['SR-Code'];
 $sNamE = $_SESSION['Name'];
+$depart = $_SESSION['department'];
 ?>
 
 
@@ -23,11 +24,16 @@ $sNamE = $_SESSION['Name'];
 
 <body>
   <div class="navigation" style="">
-
+    <h1>Batangas State University</h1>
     <img src="img/Batangas_State_Logo.png">
 
-    <p><strong>Welcome </strong> <?php echo "$sNamE !<br>"?>
-<strong>Sr-Code: </strong><?php echo $srcodE ?></p>
+    <p><strong>Welcome </strong>
+      <?php echo "$sNamE !<br>" ?>
+      <strong>Sr-Code: </strong>
+      <?php echo $srcodE ?>
+      <strong>Deparment: </strong>
+      <?php echo $depart ?>
+    </p>
 
     <a class="logoutBtn" href="login.php">
       <img src="img/cics_logo.jpg">
@@ -42,27 +48,27 @@ $sNamE = $_SESSION['Name'];
   <div class="midContainer">
     <div class="bookContainer">
 
-    <div class="bookNav">
-  <form>
-    <input type="text" placeholder="Search books..." class="search-input">
-    <button type="button" class="search-button"onclick="toggleDropdown()">Search</button>
-      <div class="extra-buttons">
-      <button type="submit" class="book-button">Book</button>
-        <button type="submit" class="description-button">Description</button>
-        <button type="submit" class="author-button">Author</button>
-        <button type="submit" class="category-button">Category</button>
+      <div class="bookNav">
+        <form>
+          <input type="text" placeholder="Search books..." class="search-input">
+          <button type="button" class="search-button" onclick="toggleDropdown()">Search</button>
+          <div class="extra-buttons">
+            <button type="submit" class="book-button">Book</button>
+            <button type="submit" class="description-button">Description</button>
+            <button type="submit" class="author-button">Author</button>
+            <button type="submit" class="category-button">Category</button>
+          </div>
+        </form>
+
+        <script>
+          function toggleDropdown() {
+            var dropdown = document.querySelector('.extra-buttons');
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+          }
+        </script>
+
+
       </div>
-  </form>
-
-<script>
- function toggleDropdown() {
-  var dropdown = document.querySelector('.extra-buttons');
-  dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
-}
- </script>
-
-
-</div>
 
       <table class="table  h6 table-bordered table-striped table-bordered table-hover mx-auto" style="width: 900px; ">
         <thead class="table-dark text-white">
@@ -71,6 +77,7 @@ $sNamE = $_SESSION['Name'];
             <th scope="col">Description</th>
             <th scope="col">Author</th>
             <th scope="col">Category</th>
+            <th scope="col">ISBN</th>
             <th scope="col" colspan="3" class="text-center"></th>
           </tr>
         </thead>
@@ -100,6 +107,7 @@ $sNamE = $_SESSION['Name'];
               echo "<td> {$bookDes} </td>";
               echo "<td> {$bookAut} </td>";
               echo "<td> {$bookCat} </td>";
+              echo "<td> {$bookISBN} </td>";
 
               echo "<td class = 'text-center'> <a href='reserve.php?book_id={$bookId}&student_id={$studID}' class='btn btn-success'> RESERVE </a></td>";
 
@@ -117,7 +125,7 @@ $sNamE = $_SESSION['Name'];
     <div class="reserveContainer">
 
 
-    
+
       <table class="table h6 table-bordered table-striped table-bordered table-hover mx-auto" style="width: 300px; ">
         <thead class="table-dark text-white">
           <tr>
