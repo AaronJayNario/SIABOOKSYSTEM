@@ -73,7 +73,6 @@ a:hover .logout {
     width: 500px;
     height: 450px;
     background-color: white;
-    opacity: 40%;
     justify-items: center;
     z-index: 1;
 }
