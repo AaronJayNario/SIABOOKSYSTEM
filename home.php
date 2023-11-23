@@ -116,7 +116,9 @@ $sNamE = $_SESSION['Name'];
 
     <div class="reserveContainer">
 
-
+    <div class="bookNav">
+    <a href="?action=perform_action"></a>
+</div>
     
       <table class="table h6 table-bordered table-striped table-bordered table-hover mx-auto" style="width: 300px; ">
         <thead class="table-dark text-white">
@@ -131,6 +133,11 @@ $sNamE = $_SESSION['Name'];
 
             <?php
 
+
+if (isset($_GET['action']) && $_GET['action'] == 'perform_action') {
+    
+}
+else {
             $query = "SELECT * FROM reservetable";
             $view_book = mysqli_query($conn, $query);
 
@@ -164,7 +171,8 @@ $sNamE = $_SESSION['Name'];
               }
 
             }
-
+          }
+          
             ?>
 
           </tr>
